@@ -43,21 +43,20 @@ sf::Texture& AssetManager::GetTexture(std::string _filename)
     }
     else
     {
-	//We did not find it
+	    //We did not find it
 
-	//Create a new key value pair using the filename
-	//The subscript [] operator creates an entry in
-	// the map if there is not already one there
+	    //Create a new key value pair using the filename
+	    //The subscript [] operator creates an entry in
+	    // the map if there is not already one there
 
-	sf::Texture& texture = s_instance->m_textures[_filename];
+	    sf::Texture& texture = s_instance->m_textures[_filename];
 
-	//Blank texture has been created
-	//Now just load it from file using sfml
-	texture.loadFromFile(_filename);
+	    //Blank texture has been created
+	    //Now just load it from file using sfml
+	    texture.loadFromFile(_filename);
 
-	return texture;
+	    return texture;
     }
-
 
 }
 
