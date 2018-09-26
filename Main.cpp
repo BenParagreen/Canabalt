@@ -3,6 +3,7 @@
 // --------------------------------------
 // Libraries
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 // Project includes
 #include "AssetManager.h"
@@ -26,9 +27,13 @@ int main()
 	//Create AssetManager
 	AssetManager assets;
 
-	//Testung Assetmanager
+	//Testing Assetmanager
 	sf::Sprite testSprite;
 	testSprite.setTexture(AssetManager::GetTexture("graphics/playerJump.png"));
+
+	sf::Sound testSound;
+	testSound.setBuffer(AssetManager::GetSoundBuffer("audio/death.wav"));
+	testSound.play();
 	// end game setup
 	// --------------------------------------
 
