@@ -97,3 +97,41 @@ sf::SoundBuffer& AssetManager::GetSoundBuffer(std::string _filename)
 	}
 
 }
+
+sf::Font& AssetManager::GetFont(std::string _filename)
+{
+	//Create an iterator to hold a key and value pair
+	// and search for the required key
+	// using the passed in file name
+	auto keyValuePair = s_instance->m_fonts.find(_filename);
+	// "auto in this case is equivalent to writing
+	// std ::map(std::string, sf::SoundBuffer>::iterator
+	// this keyword can be used in cases where the
+	// compiler can figure out the type of a variable for you
+	// \\ONLY USE THIS FOR ITERATORS\\ 
+
+// Did we find the texture? (Aka was it already loaded?)
+// (iterator will be at the end if we did NOT find it)
+	if (keyValuePair != s_instance->m_fonts.end())
+	{
+		// We found it
+		return keyValuePair->second;
+	}
+	else
+	{
+		//We did not find it
+
+		//Create a new key value pair using the filename
+		//The subscript [] operator creates an entry in
+		// the map if there is not already one there
+
+		sf::Font& font = s_instance->m_fonts[_filename];
+
+		//Blank soundbuffer has been created
+		//Now just load it from file using sfml
+		font.loadFromFile(_filename);
+
+		return font;
+	}
+
+}

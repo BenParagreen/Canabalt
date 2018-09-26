@@ -4,6 +4,7 @@
 // Libraries
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <string>
 
 // Project includes
 #include "AssetManager.h"
@@ -32,8 +33,12 @@ int main()
 	testSprite.setTexture(AssetManager::GetTexture("graphics/playerJump.png"));
 
 	sf::Sound testSound;
-	testSound.setBuffer(AssetManager::GetSoundBuffer("audio/death.wav"));
+	testSound.setBuffer(AssetManager::GetSoundBuffer("audio/music.ogg"));
 	testSound.play();
+
+	sf::Text testText;
+	testText.setFont(AssetManager::GetFont("fonts/mainFont.ttf"));
+	testText.setString("Aliens are on the moon");
 	// end game setup
 	// --------------------------------------
 
@@ -63,7 +68,7 @@ int main()
 		// Update
 		// --------------------------------------
 		sf::Time frameTime = gameClock.restart();
-
+        
 		// end update
 		// --------------------------------------
 
@@ -78,7 +83,7 @@ int main()
 
 		// Draw Everything
 		gameWindow.draw(testSprite);
-
+		gameWindow.draw(testText);
 		// Display the window contents to the screen
 		gameWindow.display();
 
