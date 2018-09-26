@@ -8,6 +8,7 @@
 
 // Project includes
 #include "AssetManager.h"
+#include "Animation.h"
 
 
 
@@ -38,7 +39,16 @@ int main()
 
 	sf::Text testText;
 	testText.setFont(AssetManager::GetFont("fonts/mainFont.ttf"));
-	testText.setString("Aliens are on the moon");
+	testText.setString("Funi meme text");
+
+	//Testing Animation
+	Animation testAnimation;
+	testAnimation.SetSprite(testSprite);
+	testAnimation.AddFrame(AssetManager::GetTexture("graphics/playerRun1.png"));
+	testAnimation.AddFrame(AssetManager::GetTexture("graphics/playerRun2.png"));
+	testAnimation.SetLoop(true);
+	testAnimation.Play();
+
 	// end game setup
 	// --------------------------------------
 
@@ -69,6 +79,8 @@ int main()
 		// --------------------------------------
 		sf::Time frameTime = gameClock.restart();
         
+		testAnimation.Update(frameTime);
+
 		// end update
 		// --------------------------------------
 
